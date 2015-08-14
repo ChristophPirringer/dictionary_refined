@@ -16,6 +16,7 @@ describe(Word) do
 
   before() do
     Word.clear()
+    Definition.clear()
   end
 
   describe(".all") do
@@ -85,7 +86,12 @@ end
 #############__Definition-Class__#############
 ##############################################
 
-describe(Word) do
+describe(Definition) do
+  
+    before() do
+      Word.clear()
+      Definition.clear()
+    end
 
   describe(".all") do
     it("returns the empty array of @@definitions") do
