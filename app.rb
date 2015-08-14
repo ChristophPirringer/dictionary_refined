@@ -42,3 +42,18 @@ end
 #########################################
 #############__DEFINITION-Class__########
 #########################################
+
+get("/words/:id/definitions/new") do
+  @word = Word.find(params.fetch("id").to_i())
+  erb(:word_definitions_form)
+end
+
+
+post("/definitions") do
+  definition = params.fetch("definition")
+  @definition = Definition.new(definition)
+  @definition.save()
+  @word = Word.find(params.fetch("word_id").to_i())
+  @word.add_definition(@definition)
+  erb(:word)
+end

@@ -1,7 +1,7 @@
 <h2>Here are all definitions of <%= @word.word_entry() %></h2>
 
 <ul><% @word.definitions().each() do |definition| %>
-  <li><a href="/definitions/<%=definition.id() %>"> <%= definition.definition_entry() %></a></li>
+  <li><%= definition.definition_entry() %></li>
   <% end %>
 </ul>
 
