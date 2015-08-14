@@ -14,6 +14,10 @@ require("pry")
 
 describe(Word) do
 
+  before() do
+    Word.clear()
+  end
+
   describe(".all") do
     it("returns the empty array of @@words") do
       expect(Word.all()).to(eq([]))
