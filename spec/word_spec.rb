@@ -26,7 +26,7 @@ describe(Word) do
     end
   end
 
-  desribe("#id") do
+  describe("#id") do
     it("returns the id of the word-entry in the @@words-array, which as the first entry is 1.") do
       test_word = Word.new("BadWolf")
       test_word.save()

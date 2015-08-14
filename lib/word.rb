@@ -30,4 +30,8 @@ class Word
   define_singleton_method(:clear) do
     @@words = []
   end
+
+  def id
+    @id
+  end
 end
