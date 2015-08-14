@@ -34,13 +34,31 @@ describe(Word) do
     end
   end
 
-  describe("find") do
+  describe(".find") do
     it("finds the word-entry through its id-number") do
       test_word = Word.new("BadWolf")
       test_word.save()
       test_word2 = Word.new("CleverBoy")
       test_word2.save()
       expect(Word.find(test_word.id())).to(eq(test_word))
+    end
+  end
+
+  describe("#definitions") do
+    it("returns an empty array of definitions for an entry in the @@words-array") do
+      test_word = Word.new("BadWolf")
+      expect(test_word.definitions()).to(eq([]))
+    end
+  end
+
+
+  describe("#add_definition") do
+    it("adds a new definition to an entry in the @@words-array") do
+      test_word = Word.new("BadWolf")
+      test_word.save()
+      test_definition = Definition.new("Rose Tyler")
+      test_word.add_definition(test_definition)
+      expect(test_word.definitions()).to(eq([test_definition]))
     end
   end
 
