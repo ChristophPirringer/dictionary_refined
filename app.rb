@@ -1,8 +1,17 @@
+#########################################
+#############__Needed-Gems__#############
+#########################################
+
 require("sinatra")
 require("sinatra/reloader")
 also_reload("lib/**/*.rb")
 require("./lib/word")
 require("./lib/definition")
+
+
+#########################################
+#############__WORD-Class__##############
+#########################################
 
 get("/") do
   erb(:index)
@@ -23,3 +32,13 @@ post("/words") do
   @words = Word.all()
   erb(:success)
 end
+
+get("/words/:id") do
+  @word = Word.find(params.fetch("id").to_i())
+  erb(:word)
+end
+
+
+#########################################
+#############__DEFINITION-Class__########
+#########################################
