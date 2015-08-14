@@ -9,4 +9,12 @@ describe(Word) do
     end
   end
 
+  describe("save") do
+    it("tests for the existance of a saved test_word") do
+      test_word = Word.new("BadWolf")
+      test_word.save()
+      expect(Word.all()).to(eq([test_word]))
+    end
+  end
+
 end
