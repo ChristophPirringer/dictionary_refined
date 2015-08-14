@@ -19,7 +19,7 @@ class Definition
   end
 
   def save
-    @@words.push(self)
+    @@definitions.push(self)
   end
 
   define_singleton_method(:clear) do

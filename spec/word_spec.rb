@@ -1,5 +1,12 @@
 require("rspec")
 require("word")
+require("definition")
+require("pry")
+
+
+########################################
+#############__Word-Class__#############
+########################################
 
 describe(Word) do
 
@@ -59,6 +66,57 @@ describe(Word) do
       test_definition = Definition.new("Rose Tyler")
       test_word.add_definition(test_definition)
       expect(test_word.definitions()).to(eq([test_definition]))
+    end
+  end
+
+end
+
+
+
+##############################################
+#############__Definition-Class__#############
+##############################################
+
+describe(Word) do
+
+  describe(".all") do
+    it("returns the empty array of @@definitions") do
+      expect(Definition.all()).to(eq([]))
+    end
+  end
+
+  describe("#save") do
+    it("tests for the existance of a saved test_definition") do
+      test_definition = Definition.new("Rose Tyler")
+      test_definition.save()
+      expect(Definition.all()).to(eq([test_definition]))
+    end
+  end
+
+  describe(".clear") do
+    it("tests for the empty array of @@definitions after saving a test_definition and then clearing it") do
+      test_definition = Definition.new("Rose Tyler")
+      test_definition.save()
+      Definition.clear()
+      expect(Definition.all()).to(eq([]))
+    end
+  end
+
+  describe("#id") do
+    it("returns the id of the definition-entry in the @@definitions-array, which as the first entry is 1.") do
+      test_definition = Definition.new("Rose Tyler")
+      test_definition.save()
+      expect(test_definition.id()).to(eq(1))
+    end
+  end
+
+  describe(".find") do
+    it("finds the definition-entry through its id-number") do
+      test_definition = Definition.new("Rose Tyler")
+      test_definition.save()
+      test_definition2 = Definition.new("Ender of Daleks")
+      test_definition2.save()
+      expect(Definition.find(test_definition.id())).to(eq(test_definition))
     end
   end
 
