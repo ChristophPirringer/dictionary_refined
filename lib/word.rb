@@ -45,4 +45,8 @@ class Word
     found_word
   end
 
+  def add_definition(definition)
+    @definitions.push(definition)
+  end
+  
 end
